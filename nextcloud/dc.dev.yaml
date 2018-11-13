@@ -4,3 +4,6 @@ services:
   nextcloud:
     ports:
       - 4343:80
+  nextclouddb:
+    ports:
+      - 5432:5432
