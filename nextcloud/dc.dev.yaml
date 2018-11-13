@@ -1,0 +1,6 @@
+version: "3.7"
+
+services:
+  nextcloud:
+    ports:
+      - 4343:80

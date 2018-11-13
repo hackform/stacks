@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  nextclouddb:
+    image: postgres:11-alpine
+    volumes:
+      - nextcloudpgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASS}
+      POSTGRES_DB: ${POSTGRES_DB}
+
+  nextcloud:
+    image: nextcloud:14-apache
+    volumes:
+      - nextclouddata:/var/www/html
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASS}
+      POSTGRES_HOST: nextclouddb
+
+volumes:
+  nextclouddata:
+  nextcloudpgdata:
