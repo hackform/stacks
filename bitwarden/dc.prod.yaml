@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  bitwarden:
+    networks:
+      - launch-net
+      - default
+    deploy:
+      mode: replicated
+      replicas: 1
+      labels:
+        - 'traefik.enable=true'
+        - 'traefik.docker.network=launch-net'
+        - 'traefik.port=80'
+
+networks:
+  launch-net:
+    external: true

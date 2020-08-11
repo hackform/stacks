@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  bitwarden:
+    image: bitwardenrs/server:alpine
+    volumes:
+      - bitwardendata:/data
+    environment:
+      SIGNUPS_ALLOWED: 'false'
+      ADMIN_TOKEN: ${BITWARDEN_PASS:-admin}
+
+volumes:
+  bitwardendata:
